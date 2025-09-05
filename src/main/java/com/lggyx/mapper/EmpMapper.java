@@ -17,4 +17,6 @@ public interface EmpMapper {
     void add(Emp emp);
 
     Emp selectById(Integer id);
+
+    void update(Emp emp);
 }

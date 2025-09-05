@@ -42,6 +42,7 @@ public class EmpServiceImpl implements EmpService {
 
     @Override
     public void add(Emp emp) {
+        emp.setEntrydate(LocalDate.now());
         emp.setCreateTime(LocalDateTime.now());
         emp.setUpdateTime(LocalDateTime.now());
         empMapper.add(emp);
@@ -50,5 +51,11 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public Emp selectById(Integer id) {
         return empMapper.selectById(id);
+    }
+
+    @Override
+    public void update(Emp emp) {
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.update(emp);
     }
 }

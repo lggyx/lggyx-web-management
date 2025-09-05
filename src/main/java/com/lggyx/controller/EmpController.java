@@ -52,4 +52,11 @@ public class EmpController {
         log.info("根据ID查询员工");
         return Result.success(empService.selectById(id));
     }
+    @PutMapping("/{id}")
+    public Result update(@PathVariable Integer id, @RequestBody Emp emp) {
+        log.info("更新员工信息");
+        emp.setId(id);
+        empService.update(emp);
+        return Result.success();
+    }
 }

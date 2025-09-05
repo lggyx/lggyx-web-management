@@ -15,6 +15,27 @@
             #{createTime}, #{updateTime}
             )
     </insert>
+    <update id="update">
+        update emp
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="image != null">
+                image = #{image},
+            </if>
+            <if test="job != null">
+                job = #{job},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
     <delete id="delete">
         delete
         from emp
