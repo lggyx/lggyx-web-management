@@ -14,13 +14,14 @@ class LggyxWebManagementApplicationTests {
     DeptController deptController;
 
     @Test
-    void deptList(){
+    void deptList() {
         //获取部门列表
         Result rs = deptController.list();
         System.out.println(rs);
     }
+
     @Test
-    void deptDelete(){
+    void deptDelete() {
         //获取部门列表
         Result rs = deptController.list();
         System.out.println(rs);
@@ -31,13 +32,14 @@ class LggyxWebManagementApplicationTests {
         rs = deptController.list();
         System.out.println(rs);
     }
+
     @Test
-    void deptAdd(){
+    void deptAdd() {
         //获取部门列表
         Result rs = deptController.list();
         System.out.println(rs);
         //添加部门
-        rs = deptController.add(new Dept(){
+        rs = deptController.add(new Dept() {
             {
                 setName("测试部");
             }
@@ -47,8 +49,9 @@ class LggyxWebManagementApplicationTests {
         rs = deptController.list();
         System.out.println(rs);
     }
+
     @Test
-    void deptGet(){
+    void deptGet() {
         //获取部门列表
         Result rs = deptController.list();
         System.out.println(rs);
@@ -56,13 +59,14 @@ class LggyxWebManagementApplicationTests {
         rs = deptController.get(1);
         System.out.println(rs);
     }
+
     @Test
-    void deptUpdate(){
+    void deptUpdate() {
         //获取部门列表
         Result rs = deptController.list();
         System.out.println(rs);
         //修改部门
-        rs = deptController.update(new Dept(){
+        rs = deptController.update(new Dept() {
             {
                 setId(1);
                 setName("测试部");

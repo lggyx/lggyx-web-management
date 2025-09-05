@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface EmpMapper {
 
-    List<Emp> list(@Param("name") String name,@Param("gender") Short gender,@Param("begin") LocalDate begin,@Param("end") LocalDate end);
+    List<Emp> list(@Param("name") String name, @Param("gender") Short gender, @Param("begin") LocalDate begin, @Param("end") LocalDate end);
 
     void delete(@Param("ids") String[] ids);
 

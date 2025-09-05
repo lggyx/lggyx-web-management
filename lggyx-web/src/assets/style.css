@@ -2,7 +2,8 @@ html {
     background-color: #26c7cc;
     height: 100%;
 }
-body{
+
+body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -11,14 +12,25 @@ body{
     align-items: center;
     height: 100vh;
 }
+
 #DashBoard {
-    height: 60vh;
-    width: 90vw;
+    height: 80vh;
+    width: 80vw;
+    min-width: 920px;
     background-color: #fafafa;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-#RouterLinkTitle{
+
+#RouterLinkTitle {
     font-size: 1em;
     text-align: center;
     margin-top: 1em;
+    background:
+            linear-gradient(45deg, rgba(60, 97, 220, 0.5) 0%, rgba(255, 0, 0, 0) 70%),
+            linear-gradient(135deg, rgba(0, 255, 0, 0.5) 0%, rgba(0, 255, 0, 0) 70%),
+            linear-gradient(90deg, rgba(0, 0, 255, 0.5) 0%, rgba(0, 0, 255, 0) 70%),
+            white;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
 }

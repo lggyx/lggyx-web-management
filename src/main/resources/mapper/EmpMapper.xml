@@ -11,9 +11,8 @@
                          job,
                          entrydate,
                          create_time,
-                         update_time) VALUE (
-                                             #{username}, #{name}, #{gender}, #{image}, #{job}, #{entrydate},
-                                             #{createTime}, #{updateTime}
+                         update_time) VALUE ( #{username}, #{name}, #{gender}, #{image}, #{job}, #{entrydate},
+            #{createTime}, #{updateTime}
             )
     </insert>
     <delete id="delete">

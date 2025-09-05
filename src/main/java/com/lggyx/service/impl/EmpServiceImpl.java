@@ -14,15 +14,17 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+
 @Slf4j
 @Service
 public class EmpServiceImpl implements EmpService {
     @Autowired
     EmpMapper empMapper;
+
     @Override
-    public PageBean page(Integer page, Integer pageSize,String name, Short gender, LocalDate begin, LocalDate end) {
+    public PageBean page(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end) {
         //1. 设置分页参数
-        PageHelper.startPage(page,pageSize);
+        PageHelper.startPage(page, pageSize);
 
         //2. 执行查询
         List<Emp> empList = empMapper.list(name, gender, begin, end);

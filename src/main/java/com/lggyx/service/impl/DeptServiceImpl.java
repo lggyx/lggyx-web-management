@@ -13,6 +13,7 @@ import java.util.List;
 public class DeptServiceImpl implements DeptService {
     @Autowired
     DeptMapper deptMapper;
+
     @Override
     public List<Dept> list() {
         return deptMapper.list();

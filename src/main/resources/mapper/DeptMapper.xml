@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lggyx.mapper.DeptMapper">
     <insert id="add">
-        insert into dept(name,create_time,update_time) values(#{name},#{createTime},#{updateTime})
+        insert into dept(name, create_time, update_time)
+        values (#{name}, #{createTime}, #{updateTime})
     </insert>
     <update id="update">
-        update dept set name=#{name},update_time=#{updateTime} where id=#{id}
+        update dept
+        set name=#{name},
+            update_time=#{updateTime}
+        where id = #{id}
     </update>
     <delete id="delete">
-        delete from dept where id=#{id}
+        delete
+        from dept
+        where id = #{id}
     </delete>
     <select id="list" resultType="com.lggyx.pojo.Dept">
-        select * from dept
+        select *
+        from dept
     </select>
     <select id="get" resultType="com.lggyx.pojo.Dept">
-        select *, date_format(create_time,'%Y-%m-%d %H:%i:%s') as createTime,date_format(update_time,'%Y-%m-%d %H:%i:%s') as updateTime from dept where id=#{id}
+        select *,
+               date_format(create_time, '%Y-%m-%d %H:%i:%s') as createTime,
+               date_format(update_time, '%Y-%m-%d %H:%i:%s') as updateTime
+        from dept
+        where id = #{id}
     </select>
 </mapper>

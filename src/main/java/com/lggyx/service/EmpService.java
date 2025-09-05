@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Service
 public interface EmpService {
 
-    PageBean page(Integer page, Integer pageSize,String name, Short gender,LocalDate begin,LocalDate end);
+    PageBean page(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end);
 
     void delete(String[] idArray);
 
