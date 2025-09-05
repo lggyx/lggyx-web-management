@@ -3,6 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lggyx.mapper.EmpMapper">
+    <insert id="add">
+        insert into emp (username,
+                         name,
+                         gender,
+                         image,
+                         job,
+                         entrydate,
+                         create_time,
+                         update_time) VALUE (
+                                             #{username}, #{name}, #{gender}, #{image}, #{job}, #{entrydate},
+                                             #{createTime}, #{updateTime}
+            )
+    </insert>
+    <delete id="delete">
+        delete
+        from emp
+        where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
     <select id="list" resultType="com.lggyx.pojo.Emp">
         select *
         from emp
@@ -18,5 +39,10 @@
             </if>
         </where>
         order by update_time desc
+    </select>
+    <select id="selectById" resultType="com.lggyx.pojo.Emp">
+        select *
+        from emp
+        where id = #{id}
     </select>
 </mapper>

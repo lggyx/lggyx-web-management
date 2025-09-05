@@ -6,12 +6,15 @@ import com.lggyx.mapper.EmpMapper;
 import com.lggyx.pojo.Emp;
 import com.lggyx.pojo.PageBean;
 import com.lggyx.service.EmpService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
-
+@Slf4j
 @Service
 public class EmpServiceImpl implements EmpService {
     @Autowired
@@ -26,6 +29,24 @@ public class EmpServiceImpl implements EmpService {
         Page<Emp> p = (Page<Emp>) empList;
 
         //3. 封装PageBean对象
-        return new PageBean(p.getTotal(), p.getResult());
+        PageBean pageBean = new PageBean(p.getTotal(), Collections.singletonList(p.getResult()));
+        return pageBean;
+    }
+
+    @Override
+    public void delete(String[] ids) {
+        empMapper.delete(ids);
+    }
+
+    @Override
+    public void add(Emp emp) {
+        emp.setCreateTime(LocalDateTime.now());
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.add(emp);
+    }
+
+    @Override
+    public Emp selectById(Integer id) {
+        return empMapper.selectById(id);
     }
 }
