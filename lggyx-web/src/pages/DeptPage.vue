@@ -13,6 +13,16 @@ axios.get('/api/depts',{
   tableData.value = res.data.data
   console.log(tableData)
 })
+function handleDelete(id: number) {
+  axios.delete('/api/depts/' + id,{
+    headers: {
+      token: localStorage.getItem('token')
+    }
+  }).then(res => {
+    console.log(res.data)
+    window.location.reload()
+  })
+}
 </script>
 
 <template>
@@ -25,7 +35,7 @@ axios.get('/api/depts',{
       <el-table-column label="操作">
         <template #default='scope'>
           <el-button size="small" type="primary">编辑</el-button>
-          <el-button size="small" type="danger">删除</el-button>
+          <el-button size="small" type="danger" @click="handleDelete(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
