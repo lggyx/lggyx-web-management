@@ -20,7 +20,19 @@ function handleDelete(id: number) {
     }
   }).then(res => {
     console.log(res.data)
-    window.location.reload()
+    if (res.data.code === 1) {
+      handleCurrentChange(1)
+    }
+  })
+}
+function handleCurrentChange(currentPage: number){
+  axios.get('/api/depts?page=' + currentPage,{
+    headers: {
+      token: localStorage.getItem('token')
+    }
+  }).then(res => {
+    console.log(res.data)
+    tableData.value = res.data.data
   })
 }
 </script>

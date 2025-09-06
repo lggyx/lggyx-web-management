@@ -198,7 +198,7 @@ const uploadToken = {
       <el-table-column label="职位" prop="job">
         <template #default="scope">
           <el-tag v-if="DeptData">
-            {{ DeptData.find((item: any) => item.id === scope.row.job).name }}
+            {{ DeptData.find((item: any) => item.id === scope.row.job)?.name || '职位未定义'}}
           </el-tag>
         </template>
       </el-table-column>

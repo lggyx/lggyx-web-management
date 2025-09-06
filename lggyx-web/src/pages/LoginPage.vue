@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {ref} from "vue";
 import axios from "axios";
+import router from "@/router";
 
 const LoginForm = ref({
   username: '',
@@ -15,6 +16,7 @@ function submit() {
     console.log(res.data)
     localStorage.setItem('token', res.data.data)
     console.log("token:",localStorage.getItem('token'))
+    window.location.href = '/Emp'
   })
 }
 </script>
