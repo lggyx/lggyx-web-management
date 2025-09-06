@@ -4,7 +4,11 @@ import axios from "axios";
 
 let tableData = ref()
 
-axios.get('/api/depts').then(res => {
+axios.get('/api/depts',{
+  headers: {
+    token: localStorage.getItem('token')
+  }
+}).then(res => {
   console.log(res.data.data)
   tableData.value = res.data.data
   console.log(tableData)

@@ -18,4 +18,6 @@ public interface EmpService {
     Emp selectById(Integer id);
 
     void update(Emp emp);
+
+    Emp login(Emp emp);
 }

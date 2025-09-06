@@ -65,4 +65,10 @@
         from emp
         where id = #{id}
     </select>
+    <select id="getByUsernameAndPassword" resultType="com.lggyx.pojo.Emp">
+        select *
+        from emp
+        where username = #{username}
+        and password = #{password}
+    </select>
 </mapper>

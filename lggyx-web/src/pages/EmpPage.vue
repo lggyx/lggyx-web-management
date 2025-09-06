@@ -27,7 +27,11 @@ var end_time = getNowFormatDate()
  */
 
 let DeptData = ref()
-axios.get('/api/depts').then(res => {
+axios.get('/api/depts',{
+  headers:{
+    token: localStorage.getItem('token')
+  }
+}).then(res => {
   DeptData.value = res.data.data
 })
 let tableData = ref()
@@ -39,6 +43,9 @@ axios.get('/api/emps', {
     gender: '',
     begin: '2010-01-01',
     end: end_time
+  },
+  headers:{
+    token: localStorage.getItem('token')
   }
 }).then(res => {
   console.log(res.data.data.rows[0])
@@ -56,6 +63,9 @@ let handleCurrentChange = (val: number) => {
       gender: '',
       begin: '2010-01-01',
       end: end_time
+    },
+    headers:{
+      token: localStorage.getItem('token')
     }
   }).then(res => {
     console.log(res.data.data.rows[0])
@@ -101,6 +111,10 @@ const DialogConfirm = (DialogTitle: any) => {
       job: DialogForm.value.job,
       image: DialogForm.value.image,
       entrydate: DialogForm.value.entrydate,
+    },{
+      headers:{
+        token: localStorage.getItem('token')
+      }
     }).then(res => {
       if (res.data.code === 1) {
         handleCurrentChange(1)
@@ -112,7 +126,11 @@ const DialogConfirm = (DialogTitle: any) => {
       clearDialog()
     })
   } else if (DialogTitle === '编辑员工') {
-    axios.put('/api/emps/' + DialogForm.value.id.toString(), DialogForm.value).then(res => {
+    axios.put('/api/emps/' + DialogForm.value.id.toString(), DialogForm.value, {
+      headers:{
+        token: localStorage.getItem('token')
+      }
+    }).then(res => {
       if (res.data.code === 1) {
         handleCurrentChange(1)
       } else {
@@ -126,7 +144,11 @@ const DialogConfirm = (DialogTitle: any) => {
 
 }
 const handleDelete = (scope: any) => {
-  axios.delete('/api/emps/' + scope.row.id).then(res => {
+  axios.delete('/api/emps/' + scope.row.id, {
+    headers:{
+      token: localStorage.getItem('token')
+    }
+  }).then(res => {
     if (res.data.code === 1) {
       handleCurrentChange(1)
     }
@@ -150,6 +172,9 @@ const clearDialog = () => {
         create_time: '',
         update_time: ''
       }
+}
+const uploadToken = {
+  token: localStorage.getItem('token')
 }
 </script>
 
@@ -229,7 +254,6 @@ const clearDialog = () => {
         <el-form-item label="头像">
           <el-upload
               :before-upload="(file: any) => {
-
         const isImage = file.type.startsWith('image/');
         const isLt2M = file.size / 1024 / 1024 < 2;
 
@@ -255,6 +279,7 @@ const clearDialog = () => {
       }"
               action="http://127.0.0.1:8080/upload"
 name="image"
+:headers="uploadToken"
               class="upload-demo"
               multiple
           >

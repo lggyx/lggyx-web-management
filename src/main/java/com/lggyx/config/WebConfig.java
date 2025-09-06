@@ -1,19 +1,20 @@
 package com.lggyx.config;
 
+import com.lggyx.interceptor.LoginCheckInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
+@Configuration //配置类
 public class WebConfig implements WebMvcConfigurer {
 
+    @Autowired
+    private LoginCheckInterceptor loginCheckInterceptor;
+
     @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // 所有接口都允许跨域
-                .allowedOriginPatterns("*") // 允许任何域名的请求
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 允许的请求方法
-                .allowedHeaders("*") // 允许任何请求头
-                .allowCredentials(true) // 允许携带认证信息
-                .maxAge(3600); // 预检请求的有效期
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/**").excludePathPatterns("/login");
     }
 }

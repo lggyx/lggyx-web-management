@@ -19,4 +19,6 @@ public interface EmpMapper {
     Emp selectById(Integer id);
 
     void update(Emp emp);
+
+    Emp getByUsernameAndPassword(Emp emp);
 }
